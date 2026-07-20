@@ -1,0 +1,18 @@
+Model: Hummingbird
+Author: Poly by Google
+Source: https://poly.pizza/m/70NyKFt-vLF
+Original file: https://static.poly.pizza/4737f745-a27e-41d5-b8ea-e888637aadb2.glb
+Mirrored to: public/models/hummingbird.glb
+License: Creative Commons Attribution 3.0 (CC-BY 3.0)
+License URL: https://creativecommons.org/licenses/by/3.0/
+
+This model is one of the original Google Poly library assets, republished
+by Poly Pizza after Google Poly's shutdown. CC-BY 3.0 explicitly permits
+commercial use, subject to attribution.
+
+Attribution line (use in a small site footer credit):
+"Hummingbird" by Poly by Google, licensed under CC-BY 3.0, via Poly Pizza
+(https://poly.pizza/m/70NyKFt-vLF)
+
+License checked and confirmed at source (poly.pizza model page metadata:
+"Licence":"CC-BY 3.0") on 2026-07-20 before this model was selected.
