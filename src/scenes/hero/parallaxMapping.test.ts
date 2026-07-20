@@ -22,8 +22,8 @@ describe('flowerSwayAngle', () => {
   });
 
   it('scales with amplitude', () => {
-    const small = flowerSwayAngle(0.5, 0, 0.1);
-    const large = flowerSwayAngle(0.5, 0, 0.5);
+    const small = flowerSwayAngle(0.25, 0, 0.1);
+    const large = flowerSwayAngle(0.25, 0, 0.5);
     expect(Math.abs(large)).toBeGreaterThan(Math.abs(small));
   });
 });
