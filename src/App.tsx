@@ -1,7 +1,36 @@
+import { useRef } from 'react';
+import { Nav } from './components/Nav';
+import { HeroOverlay } from './components/HeroOverlay';
+import { HeroScene } from './scenes/hero/HeroScene';
+import { useScrollProgress } from './scenes/hero/useScrollProgress';
+import { TrustStrip } from './components/sections/TrustStrip';
+import { Features } from './components/sections/Features';
+import { HowItWorks } from './components/sections/HowItWorks';
+import { Footer } from './components/sections/Footer';
+
 export default function App() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const scrollProgress = useScrollProgress(heroRef);
+
   return (
-    <main className="min-h-screen bg-midnight font-sans text-cream">
-      <p className="p-8 text-lg">Media Trading Platform — scaffold ready.</p>
+    <main className="bg-midnight font-sans text-cream">
+      <Nav />
+
+      <div ref={heroRef} className="relative h-[150vh]">
+        <div className="sticky top-0 h-screen w-full overflow-hidden">
+          <HeroScene scrollProgress={scrollProgress} />
+          <HeroOverlay />
+        </div>
+      </div>
+
+      <TrustStrip />
+      <Features />
+      <HowItWorks />
+      <Footer
+        modelAttribution={
+          '"Hummingbird" by Poly by Google, licensed under CC-BY 3.0, via Poly Pizza (https://poly.pizza/m/70NyKFt-vLF)'
+        }
+      />
     </main>
   );
 }
