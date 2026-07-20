@@ -18,12 +18,12 @@ export function Nav() {
         </button>
         {productsOpen && (
           <div className="absolute left-0 top-10 flex flex-col gap-1 rounded-2xl bg-violet/95 p-3 shadow-xl">
-            <span className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-cream/90 hover:bg-cream/10">
+            <a href="#publisher-tools" className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-cream/90 hover:bg-cream/10">
               Publisher Tools
-            </span>
-            <span className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-cream/90 hover:bg-cream/10">
+            </a>
+            <a href="#trading-desk" className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-cream/90 hover:bg-cream/10">
               Trading Desk
-            </span>
+            </a>
           </div>
         )}
 
