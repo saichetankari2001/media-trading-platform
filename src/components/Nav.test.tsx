@@ -20,4 +20,13 @@ describe('Nav', () => {
     fireEvent.click(trigger);
     expect(screen.queryByText(/publisher tools/i)).not.toBeInTheDocument();
   });
+
+  it('hides secondary CTA on mobile with responsive classes', () => {
+    const { container } = render(<Nav />);
+    const seeCTALink = screen.getByRole('link', { name: /see how it works/i });
+    const wrapper = seeCTALink.closest('span');
+
+    expect(wrapper).toHaveClass('hidden');
+    expect(wrapper).toHaveClass('sm:inline-flex');
+  });
 });
