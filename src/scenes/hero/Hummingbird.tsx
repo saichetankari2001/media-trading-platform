@@ -4,7 +4,6 @@ import * as THREE from 'three';
 import { createIridescentMaterial } from './shaders/iridescent';
 
 export function Hummingbird({ position }: { position: [number, number, number] }) {
-  const group = useRef<THREE.Group>(null);
   const leftWing = useRef<THREE.Mesh>(null);
   const rightWing = useRef<THREE.Mesh>(null);
   const material = useRef(createIridescentMaterial()).current;
@@ -35,7 +34,7 @@ export function Hummingbird({ position }: { position: [number, number, number] }
   });
 
   return (
-    <group ref={group} position={position}>
+    <group position={position}>
       <mesh geometry={bodyGeometry} material={material} />
       <mesh ref={leftWing} geometry={wingGeometry} material={material} position={[0.05, 0.1, 0]} />
       <mesh
