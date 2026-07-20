@@ -26,11 +26,7 @@ export default function App() {
       <TrustStrip />
       <Features />
       <HowItWorks />
-      <Footer
-        modelAttribution={
-          '"Hummingbird" by Poly by Google, licensed under CC-BY 3.0, via Poly Pizza (https://poly.pizza/m/70NyKFt-vLF)'
-        }
-      />
+      <Footer />
     </main>
   );
 }

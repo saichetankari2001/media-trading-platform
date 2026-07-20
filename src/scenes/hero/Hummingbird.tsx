@@ -1,33 +1,50 @@
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import { createIridescentMaterial } from './shaders/iridescent';
 
-const MODEL_PATH = '/models/hummingbird.glb';
-
 export function Hummingbird({ position }: { position: [number, number, number] }) {
   const group = useRef<THREE.Group>(null);
-  const { scene } = useGLTF(MODEL_PATH);
+  const leftWing = useRef<THREE.Mesh>(null);
+  const rightWing = useRef<THREE.Mesh>(null);
   const material = useRef(createIridescentMaterial()).current;
 
-  scene.traverse((child) => {
-    if (child instanceof THREE.Mesh) {
-      child.material = material;
-    }
-  });
+  const bodyGeometry = useMemo(() => {
+    const points = [
+      new THREE.Vector2(0, -0.5),
+      new THREE.Vector2(0.18, -0.3),
+      new THREE.Vector2(0.22, 0.1),
+      new THREE.Vector2(0.1, 0.45),
+      new THREE.Vector2(0, 0.55),
+    ];
+    return new THREE.LatheGeometry(points, 24);
+  }, []);
+
+  const wingGeometry = useMemo(() => {
+    const shape = new THREE.Shape();
+    shape.moveTo(0, 0);
+    shape.quadraticCurveTo(0.6, 0.15, 0.75, -0.05);
+    shape.quadraticCurveTo(0.5, -0.25, 0, 0);
+    return new THREE.ExtrudeGeometry(shape, { depth: 0.02, bevelEnabled: false });
+  }, []);
 
   useFrame((state) => {
-    if (!group.current) return;
-    const wingBeat = Math.sin(state.clock.elapsedTime * 18) * 0.1;
-    group.current.rotation.z = wingBeat;
+    const beat = Math.sin(state.clock.elapsedTime * 22) * 0.9;
+    if (leftWing.current) leftWing.current.rotation.z = beat;
+    if (rightWing.current) rightWing.current.rotation.z = -beat;
   });
 
   return (
     <group ref={group} position={position}>
-      <primitive object={scene} scale={0.4} />
+      <mesh geometry={bodyGeometry} material={material} />
+      <mesh ref={leftWing} geometry={wingGeometry} material={material} position={[0.05, 0.1, 0]} />
+      <mesh
+        ref={rightWing}
+        geometry={wingGeometry}
+        material={material}
+        position={[-0.05, 0.1, 0]}
+        scale={[-1, 1, 1]}
+      />
     </group>
   );
 }
-
-useGLTF.preload(MODEL_PATH);
