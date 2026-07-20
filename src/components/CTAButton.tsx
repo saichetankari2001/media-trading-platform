@@ -7,7 +7,8 @@ interface CTAButtonProps {
 }
 
 export function CTAButton({ children, variant, href }: CTAButtonProps) {
-  const base = 'rounded-full px-6 py-2.5 text-sm font-semibold transition-colors';
+  const base =
+    'whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-semibold transition-colors sm:px-6 sm:py-2.5 sm:text-sm';
   const styles =
     variant === 'filled'
       ? `${base} bg-glow text-midnight shadow-[0_0_20px_theme(colors.glow/60%)] hover:bg-lavender`
