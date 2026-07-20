@@ -22,7 +22,7 @@ describe('Nav', () => {
   });
 
   it('hides secondary CTA on mobile with responsive classes', () => {
-    const { container } = render(<Nav />);
+    render(<Nav />);
     const seeCTALink = screen.getByRole('link', { name: /see how it works/i });
     const wrapper = seeCTALink.closest('span');
 
